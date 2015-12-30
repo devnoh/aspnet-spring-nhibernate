@@ -5,8 +5,8 @@ Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
 * ASP.NET 4.5 + MVC 5
 * Spring.NET + NHibernate + Oracle
 
-1. Create Project
------------------
+Create Project
+--------------
 
 * New Project -> Templates -> Visual C# -> Web -> ASP.NET Web Application
 * Enter a project name
@@ -16,10 +16,10 @@ Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
     * Microsoft.AspNet.Mvc 5.2.3
     * Microsoft.AspNet.WebApi 5.2.3
 
-2. NuGet Packages for Solution
-------------------------------
+Install NuGet Packages
+----------------------
 
-* Install packages:
+* Required packages:
     * NHibernate 4.0.4.4000
     * Spring.Core 2.0.1
     * Spring.Aop 2.0.1
@@ -32,3 +32,5 @@ Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
     * Common.Logging.Log4Net1210 3.0.0
     * log4net 1.2.0
     * odp.net.managed 121.1.2
+
+* No additional Oracle Client software is required to be installed.

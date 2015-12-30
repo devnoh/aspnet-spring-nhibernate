@@ -24,7 +24,7 @@ namespace DemoApp
     }
     */
 
-    public class MvcApplication : SpringMvcApplication
+    public class Global : SpringMvcApplication
     {
         void Application_Start(object sender, EventArgs e)
         {
@@ -39,5 +39,4 @@ namespace DemoApp
             return base.BuildWebApiDependencyResolver();
         }
     }
-
 }
