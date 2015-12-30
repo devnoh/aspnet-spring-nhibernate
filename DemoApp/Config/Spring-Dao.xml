@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
+
+  <!-- Property placeholder configurer for database settings -->
+  <object type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
+    <property name="ConfigSections" value="databaseSettings"/>
+  </object>
+
+  <!-- MssqlDbProvider -->
+  <!--
+  <db:provider id="MssqlDbProvider" provider="${mssql.db.provider}" connectionString="Data Source=${db.connection.serverName};Database=${db.connection.databaseName};User ID=${db.connection.userId};Password=${db.connection.password};Trusted_Connection=False"/>
+  -->
+
+  <!-- MssqlSessionFactory -->
+  <!--
+  <object id="MssqlSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate4">
+    <property name="DbProvider" ref="MssqlDbProvider"/>
+    <property name="MappingAssemblies">
+      <list>
+        <value>DemoApp</value>
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+        <entry key="connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
+        <entry key="connection.driver_class" value="${mssql.db.connection.driver_class}"/>
+        <entry key="dialect" value="${mssql.db.dialect}"/>
+        <entry key="show_sql" value="${hibernate.show_sql}" />
+        <entry key="hbm2dll.auto" value="validate" />
+        <entry key="command_timeout" value="120" />
+      </dictionary>
+    </property>
+    <property name="SchemaUpdate" value="false"/>
+    <property name="ExposeTransactionAwareSessionFactory" value="true" />
+  </object>
+  -->
+
+  <!-- OracleDbProvider -->
+  <db:provider id="OracleDbProvider" provider="${oracle.db.provider}" connectionString="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${db.connection.serverName})(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=${db.connection.databaseName})));User Id=${db.connection.userId};Password=${db.connection.password};"/>
+
+  <!-- OracleSessionFactory -->
+  <object id="OracleSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate4">
+    <property name="DbProvider" ref="OracleDbProvider"/>
+    <property name="MappingAssemblies">
+      <list>
+        <value>DemoApp</value>
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+        <entry key="connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
+        <entry key="connection.driver_class" value="${oracle.db.connection.driver_class}"/>
+        <entry key="dialect" value="${oracle.db.dialect}"/>
+        <entry key="show_sql" value="false" />
+        <entry key="hbm2dll.auto" value="validate" />
+        <entry key="command_timeout" value="120" />
+      </dictionary>
+    </property>
+    <property name="SchemaUpdate" value="false"/>
+    <property name="ExposeTransactionAwareSessionFactory" value="true" />
+  </object>
+
+  <!-- Aliases -->
+  <alias name="OracleDbProvider" alias="DbProvider"/>
+  <alias name="OracleSessionFactory" alias="SessionFactory"/>
+
+  <!-- Transaction Management Strategy - local database transactions -->
+  <object id="TransactionManager"
+        type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate4">
+    <property name="DbProvider" ref="DbProvider"/>
+    <property name="SessionFactory" ref="SessionFactory"/>
+  </object>
+
+  <!-- Exception translation object post processor -->
+  <object type="Spring.Dao.Attributes.PersistenceExceptionTranslationPostProcessor, Spring.Data"/>
+
+  <!-- Data Access Objects -->
+  <object id="DeptDao" type="DemoApp.Dao.NHibernate.HibernateDeptDao, DemoApp">
+    <property name="SessionFactory" ref="SessionFactory"/>
+  </object>
+  <object id="EmpDao" type="DemoApp.Dao.NHibernate.HibernateEmpDao, DemoApp">
+    <property name="SessionFactory" ref="SessionFactory"/>
+  </object>
+
+</objects>

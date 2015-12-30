@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DemoApp.Models" assembly="DemoApp">
+  <class name="Emp" table="Emp" lazy="false">
+    <id name="EmpNo" column="EmpNo" type="Int32" unsaved-value="0">
+      <!--<generator class="assigned"/>-->
+      <generator class="NHibernate.Id.Enhanced.TableGenerator, NHibernate">
+        <param name="optimizer">none</param>
+        <param name="table_name">SEQUENCE</param>
+        <param name="segment_column_name">NAME</param>
+        <param name="value_column_name">VALUE</param>
+        <param name="segment_value">EMPNO</param>
+        <param name="segment_value_length">15</param>
+        <param name="initial_value">10001</param>
+        <param name="increment_size">1</param>
+      </generator>
+    </id>
+    <property name="EName" type="String">
+      <column name="EName" length="10"/>
+    </property>
+    <property name="Job" type="String">
+      <column name="Job" length="9"/>
+    </property>
+    <property name="Mgr" type="Int32">
+      <column name="Mgr" length="4"/>
+    </property>
+    <property name="HireDate" type="DateTime">
+      <column name="HireDate"/>
+    </property>
+    <property name="Sal" type="Double">
+      <column name="Sal" precision="7" scale="2"/>
+    </property>
+    <property name="Comm" type="Double">
+      <column name="Comm" precision="7" scale="2"/>
+    </property>
+    <many-to-one name="Dept" class="Dept" column="DeptNo" not-null="false"/>    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2>Departments</h2>
+
+<ul>
+    @foreach (var dept in ViewBag.Depts)
+    {
+        <li><a href="@Url.Action("Emps", "Home", new { deptNo = dept.DeptNo })">@dept.DName</a></li>
+    }
+</ul>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DemoApp.Models" assembly="DemoApp">
+  <class name="Dept" table="Dept" lazy="false">
+    <id name="DeptNo" column="DeptNo" type="Int32" unsaved-value="0">
+      <!--<generator class="assigned"/>-->
+      <generator class="NHibernate.Id.Enhanced.TableGenerator, NHibernate">
+        <param name="optimizer">none</param>
+        <param name="table_name">SEQUENCE</param>
+        <param name="segment_column_name">NAME</param>
+        <param name="value_column_name">VALUE</param>
+        <param name="segment_value">DEPTNO</param>
+        <param name="segment_value_length">15</param>
+        <param name="initial_value">10001</param>
+        <param name="increment_size">1</param>
+      </generator>      
+    </id>
+    <property name="DName" type="String">
+      <column name="DName" length="14"/>
+    </property>
+    <property name="Loc" type="String">
+      <column name="Loc" length="13"/>
+    </property>
+  </class>
+</hibernate-mapping>

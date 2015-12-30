@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Employees</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Job</th>
+        <th>Hired</th>
+        <th>Sal</th>
+        <th>Comm</th>
+        <th>Dept</th>
+        <th>Loc</th>
+    </tr>
+    @foreach (var emp in ViewBag.Emps)
+    {
+        <tr>
+            <td>@emp.EmpNo</td>
+            <td>@emp.EName</td>
+            <td>@emp.Job</td>
+            <td>@emp.HireDate.ToString("M/d/yyyy")</td>
+            <td>@emp.Sal</td>
+            <td>@emp.Comm</td>
+            <td>@emp.Dept.DName</td>
+            <td>@emp.Dept.Loc</td>
+        </tr>
+    }
+</table>

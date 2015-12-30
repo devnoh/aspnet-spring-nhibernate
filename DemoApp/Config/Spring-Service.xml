@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:aop="http://www.springframework.net/aop" xmlns:tx="http://www.springframework.net/tx">
+
+  <!-- Transaction Management -->
+  <tx:attribute-driven transaction-manager="TransactionManager"/>
+
+  <tx:advice id="TxAdvice" transaction-manager="TransactionManager">
+    <tx:attributes>
+      <tx:method name="Get*" propagation="Supports" read-only="true" rollback-for="Exception" />
+      <tx:method name="Find*" propagation="Supports" read-only="true" rollback-for="Exception" />
+      <tx:method name="Select*" propagation="Supports" read-only="true" rollback-for="Exception" />
+      <tx:method name="Is*" propagation="Supports" read-only="true" rollback-for="Exception" />
+      <tx:method name="Are*" propagation="Supports" read-only="true" rollback-for="Exception" />
+      <tx:method name="Has*" propagation="Supports" read-only="true" rollback-for="Exception" />
+      <tx:method name="*" propagation="Required" read-only="false" rollback-for="Exception" />
+    </tx:attributes>
+  </tx:advice>
+
+  <!-- Exception Logging -->
+  <object id="ExceptionAdvice" type="DemoApp.Aspect.ExceptionAdvice, DemoApp" />
+
+  <!-- AOP -->
+  <object id="ServicePointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
+    <property name="patterns">
+      <list>
+        <value>DemoApp.Service.*</value>
+      </list>
+    </property>
+  </object>
+
+  <aop:config>
+    <aop:advisor advice-ref="TxAdvice" pointcut-ref="ServicePointcut" />
+    <aop:advisor advice-ref="ExceptionAdvice" pointcut-ref="ServicePointcut" />
+  </aop:config>
+
+  <!-- Services -->
+  <object id="DemoService" type="DemoApp.Service.Impl.DemoServiceImpl, DemoApp">
+    <property name="DeptDao" ref="DeptDao" />
+    <property name="EmpDao" ref="EmpDao" />
+  </object> 
+
+</objects>
