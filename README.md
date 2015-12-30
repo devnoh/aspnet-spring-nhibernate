@@ -2,6 +2,8 @@
 Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
 
 * Visual Studio 2015
+* ASP.NET 4.5 + MVC 5
+* Spring.NET + NHibernate + Oracle
 
 1. Create Project
 -----------------
@@ -14,8 +16,8 @@ Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
     * Microsoft.AspNet.Mvc 5.2.3
     * Microsoft.AspNet.WebApi 5.2.3
 
-2. Manage NuGet Packages for Solution
--------------------------------------
+2. NuGet Packages for Solution
+------------------------------
 
 * Install packages:
     * NHibernate 4.0.4.4000
