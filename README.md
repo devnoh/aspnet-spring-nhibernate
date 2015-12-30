@@ -2,7 +2,6 @@
 Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
 
 * Visual Studio 2015
-* Windows Server 2012 R2
 
 1. Create Project
 -----------------
@@ -11,10 +10,7 @@ Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
 * Enter a project name
 * Select a template: ASP.NET 4.5.2 Templates -> Empty
 * Check options to add folders and core references for: MVC, Web API
-
-or
-
-* Install packages:
+* Or install packages:
     * Microsoft.AspNet.Mvc 5.2.3
     * Microsoft.AspNet.WebApi 5.2.3
 
