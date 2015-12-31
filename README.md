@@ -30,7 +30,7 @@ Install NuGet Packages
     * Common.Logging 3.0.0
     * Common.Logging.Core 3.0.0
     * Common.Logging.Log4Net1210 3.0.0
-    * log4net 1.2.0
+    * log4net 1.2.10
     * odp.net.managed 121.1.2
 
 * No additional Oracle Client software is required to be installed.
