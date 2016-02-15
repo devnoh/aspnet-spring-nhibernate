@@ -1,5 +1,5 @@
 # aspnet-spring-nhibernate
-Building a Web App with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
+Building a Web Application with ASP.NET MVC 5, Spring.NET 2 and NHibernate 4
 
 * Visual Studio 2015
 * ASP.NET 4.5 + MVC 5
